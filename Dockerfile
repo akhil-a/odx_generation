@@ -2,7 +2,7 @@
 FROM ubuntu
 
 RUN apt-get update && apt-get install -y build-essential vim libarchive-zip-perl
-RUN mkdir ODX_AUTOMATION
+RUN mkdir ODX_AUTOMATION 
 WORKDIR ODX_AUTOMATION
 copy . .
 #Install Libsodium.s0.23.1.0
@@ -21,5 +21,6 @@ WORKDIR /ODX_AUTOMATION/
 RUN dpkg -i libboost-system1.58.0_1.58.0+dfsg-5ubuntu3_amd64.deb 
 RUN dpkg -i libboost-filesystem1.58.0_1.58.0+dfsg-5ubuntu3_amd64.deb
 
-RUN rm -rf /ODX_AUTOMATION/*
-COPY Files/* /ODX_AUTOMATION/
+RUN rm -rf /ODX_AUTOMATION/* && mkdir /ODX_AUTOMATION/Inputs
+COPY Inputs/* /ODX_AUTOMATION/Inputs/
+COPY odx_generation_script.sh /ODX_AUTOMATION/
