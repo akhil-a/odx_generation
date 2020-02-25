@@ -1,7 +1,7 @@
 # Set the base image to Ubuntu
 FROM ubuntu
 
-RUN apt-get update && apt-get install -y build-essential
+RUN apt-get update && apt-get install -y build-essential vim libarchive-zip-perl
 RUN mkdir ODX_AUTOMATION
 WORKDIR ODX_AUTOMATION
 copy . .
@@ -22,3 +22,4 @@ RUN dpkg -i libboost-system1.58.0_1.58.0+dfsg-5ubuntu3_amd64.deb
 RUN dpkg -i libboost-filesystem1.58.0_1.58.0+dfsg-5ubuntu3_amd64.deb
 
 RUN rm -rf /ODX_AUTOMATION/*
+COPY Files/* /ODX_AUTOMATION/
